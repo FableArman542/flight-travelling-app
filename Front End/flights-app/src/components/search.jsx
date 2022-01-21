@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 
 const ProcuraVoos = (procurarVoo) => {
-
     return (
         <div className="booking-form">
                 <div className="form-group">
