@@ -8,7 +8,7 @@ import React, { useState } from 'react';
 
 const ControladorPrincipal = () => {
 
-    const [listaDesejos, setListaDesejos] = useState(false);
+    const [listaDesejos, setListaDesejos] = useState('destaques');
 
     // Auxiliares
     const [infoVoo, setInfoVoo] = useState(null);
@@ -23,7 +23,7 @@ const ControladorPrincipal = () => {
     }
 
     function listarDesejos() {
-        setListaDesejos(true);
+        setListaDesejos('desejos');
         voltar();
     }
 
@@ -36,15 +36,15 @@ const ControladorPrincipal = () => {
     }
 
     function listarInfoCompanhias() {
-        
+        setListaDesejos('companhias');
     }
     
     return (
         <div>
-            <div class="topnav">
-                <a class="topnava" onClick={listarDestaques}>Home</a>
-                <a class="topnava"onClick={listarDesejos}>Lista De Desejos</a>
-                <a class="topnava">Informações</a>
+            <div className="topnav">
+                <a className="topnava" onClick={listarDestaques}>Home</a>
+                <a className="topnava" onClick={listarDesejos}>Lista De Desejos</a>
+                <a className="topnava" onClick={listarInfoCompanhias}>Informações</a>
             </div>
             <div id="booking" className="section">
 

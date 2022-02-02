@@ -19,6 +19,7 @@ const ControladorVoos = (controladorPrincipal) => {
 
     // Obter voos do backend
     function obterVoos () {
+        // Input do utilizador
         let infoVoo = controladorPrincipal.controladorPrincipal;
 
         (async() => {
