@@ -1,23 +1,25 @@
 import '../../css/style.css';
+import '../../css/header_style.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import ProcuraVoos from '../../components/search';
 import ControladorSistema from './controladorSistema';
 import ControladorVoos from './controladorVoos';
-import React, { useState, useRef } from 'react';
-
+import React, { useState } from 'react';
 
 const ControladorPrincipal = () => {
 
     const [listaDesejos, setListaDesejos] = useState(false);
-    
-    let controladorSistema = <ControladorSistema controladorPrincipal={listaDesejos}/>;
-    let controladorVoos = <ControladorVoos />;
 
     // Auxiliares
+    const [infoVoo, setInfoVoo] = useState(null);
     const [comutar, setComutar] = useState(true);
+    
+    let controladorSistema = <ControladorSistema controladorPrincipal={listaDesejos}/>;
+    let controladorVoos = <ControladorVoos controladorPrincipal={infoVoo} />;
 
-    function procurarVoo(infoVoo) {
-        setComutar(!comutar);
+    function procurarVoo(informacaoVoo) {
+        setInfoVoo(informacaoVoo);
+        setComutar(false);
     }
 
     function listarDesejos() {
@@ -28,13 +30,28 @@ const ControladorPrincipal = () => {
     function voltar() {
         setComutar(true);
     }
+
+    function listarDestaques() {
+        window.location.reload();
+    }
+
+    function listarInfoCompanhias() {
+        
+    }
     
     return (
-        <div id="booking" className="section">
+        <div>
+            <div class="topnav">
+                <a class="topnava" onClick={listarDestaques}>Home</a>
+                <a class="topnava"onClick={listarDesejos}>Lista De Desejos</a>
+                <a class="topnava">Informações</a>
+            </div>
+            <div id="booking" className="section">
+
             <div className="section-center">
                 <div className="container">
                     <div className="row">
-                        <button className="submit-btn" onClick={listarDesejos}>Lista Desejos</button>
+                        {/* <button className="submit-btn" onClick={listarDesejos}>Lista Desejos</button> */}
                         <div className="col-md-4 col-md-pull-7">
                         <ProcuraVoos procurarVoo={procurarVoo}/>
                         </div>
@@ -48,6 +65,8 @@ const ControladorPrincipal = () => {
                 </div>
             </div>
         </div>
+        </div>
+        
     );
 
 }
