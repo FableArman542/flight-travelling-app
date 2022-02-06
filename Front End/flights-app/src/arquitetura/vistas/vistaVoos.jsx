@@ -14,9 +14,9 @@ const VistaVoos = (controlador) => {
         voos.push(
                     <div className="blank-white-board destaque" key={i}>
                         <p>{controlador.controlador[i].preco}</p>
+                        <p>{controlador.controlador[i].dataPartida} - {controlador.controlador[i].dataChegada}</p>
                     </div>);
     }
-
 
     return (
         <div>
